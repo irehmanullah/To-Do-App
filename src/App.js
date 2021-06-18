@@ -5,7 +5,6 @@ import { useState } from 'react';
 function App() {
   const [inputText, setInputText] = useState("");
   const [todos, setTodos] = useState([]);
-  console.log(todos)
   return (
     <div className="App">
       <header>
