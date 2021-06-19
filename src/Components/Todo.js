@@ -1,5 +1,5 @@
 
-const Todo = ({ text, todo, todos, setTodos, message, setInputText, setInputTodo }) => {
+const Todo = ({ text, todo, todos, setTodos, key, message, setInputText, setInputTodo }) => {
     const deleteHandler = () => {
         setTodos(todos.filter((el) => el.id !== todo.id))
     }
@@ -14,6 +14,13 @@ const Todo = ({ text, todo, todos, setTodos, message, setInputText, setInputTodo
     const editTodo = () => {
         setInputText(text);
         setInputTodo(message);
+        console.log(todos)
+        setTodos(todos.map((item) => {
+            if (item.id === todo.id) {
+                console.log(item)
+            }
+            return item;
+        }))
     }
     return (
         <div className="todo">
