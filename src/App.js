@@ -1,6 +1,7 @@
 import './App.css';
 import Form from './Components/Form';
 import TodoList from './Components/TodoList';
+import Todo from './Components/Todo';
 import { useState, useEffect } from 'react';
 function App() {
   const [inputText, setInputText] = useState("");
@@ -42,7 +43,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Todo List</h1>
+        <h1>My Todo List</h1>
       </header>
       <Form todos={todos}
        setTodos={setTodos} 
@@ -52,7 +53,8 @@ function App() {
        inputTodo={inputTodo}
        setInputTodo={setInputTodo}
        />
-      <TodoList filteredTodos={filteredTodos} todos={todos} setTodos={setTodos} />
+      <TodoList filteredTodos={filteredTodos} todos={todos} setTodos={setTodos} setInputText={setInputText} setInputTodo={setInputTodo} />
+      {/* <Todo setInputText={setInputText} setInputTodo={setInputTodo} /> */}
     </div>
   );
 }
