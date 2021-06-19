@@ -14,13 +14,7 @@ const Todo = ({ text, todo, todos, setTodos, key, message, setInputText, setInpu
     const editTodo = () => {
         setInputText(text);
         setInputTodo(message);
-        console.log(todos)
-        setTodos(todos.map((item) => {
-            if (item.id === todo.id) {
-                console.log(item)
-            }
-            return item;
-        }))
+                setTodos(todos.filter((el) => el.id !== todo.id))
     }
     return (
         <div className="todo">
