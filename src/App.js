@@ -4,6 +4,7 @@ import TodoList from './Components/TodoList';
 import { useState, useEffect } from 'react';
 function App() {
   const [inputText, setInputText] = useState("");
+  const [inputTodo, setInputTodo] = useState("");
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState('all');
   const [filteredTodos, setFilteredTodos] = useState([]);
@@ -43,7 +44,14 @@ function App() {
       <header>
         <h1>Todo List</h1>
       </header>
-      <Form todos={todos} setTodos={setTodos} inputText={inputText} setInputText={setInputText} setStatus={setStatus} />
+      <Form todos={todos}
+       setTodos={setTodos} 
+       inputText={inputText} 
+       setInputText={setInputText} 
+       setStatus={setStatus} 
+       inputTodo={inputTodo}
+       setInputTodo={setInputTodo}
+       />
       <TodoList filteredTodos={filteredTodos} todos={todos} setTodos={setTodos} />
     </div>
   );

@@ -1,14 +1,18 @@
 
-const Form = ({ setInputText, inputText, todos, setTodos, setStatus }) => {
+const Form = ({ setInputText, inputText, todos, setTodos, setStatus, setInputTodo, inputTodo }) => {
     const changeHandler = (e) => {
         setInputText(e.target.value)
+    }
+    const todoChangeHandler = (e) => {
+        setInputTodo(e.target.value)
     }
     const submitTodoHandler = (e) => {
         e.preventDefault();
         setTodos([
-            ...todos, { text: inputText, completed: false, id: Math.random() }
+            ...todos, { text: inputText, Todo:inputTodo, completed: false, id: Math.random() }
         ])
         setInputText("")
+        setInputTodo("")
     }
     const statusHandler=(e)=>{
         console.log(e.target.value);
@@ -17,6 +21,7 @@ const Form = ({ setInputText, inputText, todos, setTodos, setStatus }) => {
     return (
         <form>
             <input type="text" value={inputText} className="todo-input" onChange={changeHandler} placeholder="Title" required/>
+            <input type="text" value={inputTodo} className="select" onChange={todoChangeHandler} placeholder="Todo" required/>
             <button className="todo-button" type="submit" onClick={submitTodoHandler}>
                 <i className="fas fa-plus-square"></i>
             </button>

@@ -1,5 +1,5 @@
 
-const Todo = ({ text, todo, todos, setTodos }) => {
+const Todo = ({ text, todo, todos, setTodos, message }) => {
     const deleteHandler = () => {
         setTodos(todos.filter((el) => el.id !== todo.id))
     }
@@ -13,7 +13,7 @@ const Todo = ({ text, todo, todos, setTodos }) => {
     }
     return (
         <div className="todo">
-            <li className={`todo-item ${todo.completed ? "completed" : " "}`}>{text}</li>
+            <li className={`todo-item ${todo.completed ? "completed" : " "}`}>{text}{":   "}{message}</li>
             <button onClick={completeHandler} className="complete-btn"><i className="fas fa-check"></i></button>
             <button onClick={deleteHandler} className="trash-btn"><i className="fas fa-trash"></i></button>
         </div>
