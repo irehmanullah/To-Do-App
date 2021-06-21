@@ -38,21 +38,23 @@ form button:hover {
   color: white;
 }
 .todo-container {
-  /* display: flex; */
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .todo-list {
-  width: 30%;
   list-style: none;
-  /* display:inline-flex; */
+  background: grey;
 }
 
 .todo {
-  margin: 0.5rem;
+  float: left;
+  overflow: auto;
+  width: 30%;
+  margin: 1rem;
   background: white;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: black;
   display: flex;
   justify-content: space-between;
@@ -93,6 +95,7 @@ form button:hover {
 }
 
 .completed {
+  background-color: green;
   text-decoration: line-through;
   opacity: 0.5;
 }
