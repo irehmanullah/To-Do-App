@@ -48,6 +48,7 @@ form button:hover {
 }
 
 .todo {
+  cursor: text;
   float: left;
   overflow: auto;
   width: 30%;
