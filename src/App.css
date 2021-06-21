@@ -38,14 +38,15 @@ form button:hover {
   color: white;
 }
 .todo-container {
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
 }
 
 .todo-list {
-  min-width: 30%;
+  width: 30%;
   list-style: none;
+  /* display:inline-flex; */
 }
 
 .todo {
