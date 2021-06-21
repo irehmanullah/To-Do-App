@@ -8,20 +8,24 @@ const Form = ({ setInputText, inputText, todos, setTodos, setStatus, setInputTod
     }
     const submitTodoHandler = (e) => {
         e.preventDefault();
-        setTodos([
-            ...todos, { text: inputText, Todo:inputTodo, completed: false, id: Math.random() }
-        ])
+        if (inputText !== "" || inputTodo !== "") {
+            setTodos([
+                ...todos, { text: inputText, Todo: inputTodo, completed: false, id: Math.random() }
+            ])
+        }else{
+        alert("Please Enter Todo")
+        }
         setInputText("")
         setInputTodo("")
     }
-    const statusHandler=(e)=>{
+    const statusHandler = (e) => {
         console.log(e.target.value);
         setStatus(e.target.value);
     }
     return (
         <form>
-            <input type="text" value={inputText} className="todo-input" onChange={changeHandler} placeholder="Title" required/>
-            <input type="text" value={inputTodo} className="select" onChange={todoChangeHandler} placeholder="Todo" required/>
+            <input type="text" value={inputText} className="todo-input" onChange={changeHandler} placeholder="Title" required />
+            <input type="text" value={inputTodo} className="select" onChange={todoChangeHandler} placeholder="Todo" required />
             <button className="todo-button" type="submit" onClick={submitTodoHandler}>
                 <i className="fas fa-plus-square"></i>
             </button>
