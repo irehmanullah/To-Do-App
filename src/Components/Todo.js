@@ -1,7 +1,9 @@
 
 const Todo = ({ text, todo, todos, setTodos, key, message, setInputText, setInputTodo }) => {
     const deleteHandler = () => {
+        if(window.confirm("Do you want to delete that todo?")){
         setTodos(todos.filter((el) => el.id !== todo.id))
+        }
     }
     const completeHandler = () => {
         setTodos(todos.map((item) => {
