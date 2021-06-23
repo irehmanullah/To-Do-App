@@ -65,7 +65,6 @@ function App() {
         setDeleted={setDeleted}
         deleted={deleted}
       />
-      {/* <Todo setInputText={setInputText} setInputTodo={setInputTodo} /> */}
     </div>
   );
 }
