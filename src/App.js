@@ -8,6 +8,7 @@ function App() {
   const [inputTodo, setInputTodo] = useState("");
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState('all');
+  const [deleted, setDeleted] = useState([]);
   const [filteredTodos, setFilteredTodos] = useState([]);
   useEffect(() => {
     getLocalTodos();
@@ -23,6 +24,9 @@ function App() {
         break;
       case 'uncompleted':
         setFilteredTodos(todos.filter(todo => todo.completed === false));
+        break;
+      case 'deleted':
+        setFilteredTodos(deleted);
         break;
       default:
         setFilteredTodos(todos);
@@ -46,14 +50,21 @@ function App() {
         <h1>My Todo List</h1>
       </header>
       <Form todos={todos}
-       setTodos={setTodos} 
-       inputText={inputText} 
-       setInputText={setInputText} 
-       setStatus={setStatus} 
-       inputTodo={inputTodo}
-       setInputTodo={setInputTodo}
-       />
-      <TodoList filteredTodos={filteredTodos} todos={todos} setTodos={setTodos} setInputText={setInputText} setInputTodo={setInputTodo} />
+        setTodos={setTodos}
+        inputText={inputText}
+        setInputText={setInputText}
+        setStatus={setStatus}
+        inputTodo={inputTodo}
+        setInputTodo={setInputTodo}
+      />
+      <TodoList filteredTodos={filteredTodos}
+        todos={todos}
+        setTodos={setTodos}
+        setInputText={setInputText}
+        setInputTodo={setInputTodo}
+        setDeleted={setDeleted}
+        deleted={deleted}
+      />
       {/* <Todo setInputText={setInputText} setInputTodo={setInputTodo} /> */}
     </div>
   );

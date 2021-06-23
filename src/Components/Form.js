@@ -34,6 +34,7 @@ const Form = ({ setInputText, inputText, todos, setTodos, setStatus, setInputTod
                     <option value="all">All</option>
                     <option value="completed">Completed</option>
                     <option value="uncompleted">Uncompleted</option>
+                    <option value="deleted">Deleted</option>
                 </select>
             </div>
         </form>

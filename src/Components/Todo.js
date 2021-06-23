@@ -1,8 +1,8 @@
-
-const Todo = ({ text, todo, todos, setTodos, key, message, setInputText, setInputTodo }) => {
+const Todo = ({ text, todo, todos, setDeleted, setTodos, key, message, setInputText, setInputTodo }) => {
     const deleteHandler = () => {
-        if(window.confirm("Do you want to delete that todo?")){
-        setTodos(todos.filter((el) => el.id !== todo.id))
+        if (window.confirm("Do you want to delete that todo?")) {
+            setDeleted(todos.filter((el) => el.id === todo.id));   
+            setTodos(todos.filter((el) => el.id !== todo.id))
         }
     }
     const completeHandler = () => {
@@ -16,7 +16,7 @@ const Todo = ({ text, todo, todos, setTodos, key, message, setInputText, setInpu
     const editTodo = () => {
         setInputText(text);
         setInputTodo(message);
-                setTodos(todos.filter((el) => el.id !== todo.id))
+        setTodos(todos.filter((el) => el.id !== todo.id))
     }
     return (
         <div className="todo">
