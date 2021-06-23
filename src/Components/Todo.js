@@ -20,7 +20,8 @@ const Todo = ({ text, todo, todos, setTodos, key, message, setInputText, setInpu
     }
     return (
         <div className="todo">
-            <li onClick={editTodo} className={`todo-item ${todo.completed ? "completed" : " "}`}>{text}{": "}{message}</li>
+            <li className={`todo-item ${todo.completed ? "completed" : " "}`}>{text}{": "}{message}</li>
+            <button onClick={editTodo} className="edit-btn"><i className="fas fa-edit"></i></button>
             <button onClick={completeHandler} className="complete-btn"><i className="fas fa-check"></i></button>
             <button onClick={deleteHandler} className="trash-btn"><i className="fas fa-trash"></i></button>
         </div>
