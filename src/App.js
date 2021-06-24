@@ -8,7 +8,6 @@ function App() {
   const [inputTodo, setInputTodo] = useState("");
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState('all');
-  const [deleted, setDeleted] = useState([]);
   const [filteredTodos, setFilteredTodos] = useState([]);
   useEffect(() => {
     getLocalTodos();
@@ -24,9 +23,6 @@ function App() {
         break;
       case 'uncompleted':
         setFilteredTodos(todos.filter(todo => todo.completed === false));
-        break;
-      case 'deleted':
-        setFilteredTodos(deleted);
         break;
       default:
         setFilteredTodos(todos);
@@ -62,8 +58,6 @@ function App() {
         setTodos={setTodos}
         setInputText={setInputText}
         setInputTodo={setInputTodo}
-        setDeleted={setDeleted}
-        deleted={deleted}
       />
     </div>
   );
