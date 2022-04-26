@@ -1,26 +1,30 @@
 const Form = ({ setInputText, inputText, todos, setTodos, setStatus, setInputTodo, inputTodo }) => {
+
     const changeHandler = (e) => {
         setInputText(e.target.value)
     }
+
     const todoChangeHandler = (e) => {
         setInputTodo(e.target.value)
     }
+
     const submitTodoHandler = (e) => {
         e.preventDefault();
         if (inputText !== "" || inputTodo !== "") {
             setTodos([
                 ...todos, { text: inputText, Todo: inputTodo, completed: false, id: Math.random() }
             ])
-        }else{
-        alert("Please Enter Todo")
+        } else {
+            alert("Please Enter Todo")
         }
         setInputText("")
         setInputTodo("")
     }
+
     const statusHandler = (e) => {
-        console.log(e.target.value);
         setStatus(e.target.value);
     }
+
     return (
         <form>
             <input type="text" value={inputText} className="todo-input" onChange={changeHandler} maxLength={30} placeholder="Title" required />
@@ -38,4 +42,5 @@ const Form = ({ setInputText, inputText, todos, setTodos, setStatus, setInputTod
         </form>
     )
 }
+
 export default Form;

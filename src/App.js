@@ -1,22 +1,19 @@
 import './App.css';
 import Form from './Components/Form';
 import TodoList from './Components/TodoList';
-import Todo from './Components/Todo';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 function App() {
   const [inputText, setInputText] = useState("");
   const [inputTodo, setInputTodo] = useState("");
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState('all');
   const [filteredTodos, setFilteredTodos] = useState([]);
+
   useEffect(() => {
     getLocalTodos();
   }, [])
-  useEffect(() => {
-    filterHandler();
-    saveLocalTodos();
-  }, [todos, status])
-  const filterHandler = () => {
+
+  const filterHandler = useCallback(() => {
     switch (status) {
       case 'completed':
         setFilteredTodos(todos.filter(todo => todo.completed === true));
@@ -28,15 +25,22 @@ function App() {
         setFilteredTodos(todos);
         break;
     }
-  }
-  const saveLocalTodos = () => {
+  }, [status, todos])
+
+  const saveLocalTodos = useCallback(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
-  }
+  }, [todos])
+
+  useEffect(() => {
+    filterHandler();
+    saveLocalTodos();
+  }, [todos, status, filterHandler, saveLocalTodos])
+
   const getLocalTodos = () => {
     if (localStorage.getItem("todos") === null) {
       localStorage.setItem("todos", JSON.stringify([]));
     } else {
-      let todoLocal = JSON.parse(localStorage.getItem("todos"));
+      const todoLocal = JSON.parse(localStorage.getItem("todos"));
       setTodos(todoLocal);
     }
   }
@@ -45,15 +49,17 @@ function App() {
       <header>
         <h1>My Todo List</h1>
       </header>
-      <Form todos={todos}
-        setTodos={setTodos}
+      <Form
         inputText={inputText}
         setInputText={setInputText}
-        setStatus={setStatus}
         inputTodo={inputTodo}
         setInputTodo={setInputTodo}
+        todos={todos}
+        setTodos={setTodos}
+        setStatus={setStatus}
       />
-      <TodoList filteredTodos={filteredTodos}
+      <TodoList
+        filteredTodos={filteredTodos}
         todos={todos}
         setTodos={setTodos}
         setInputText={setInputText}
